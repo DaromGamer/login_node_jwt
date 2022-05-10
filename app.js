@@ -26,8 +26,8 @@ app.use('/', require('./routes/router'))
 /*app.get('/', (req, res)=>{
     res.render('index')
 })*/
-
-app.listen(0.0.0.0:8080, ()=>{
+app.set('port', process.env.PORT || 3000)
+app.listen('port', ()=>{
     console.log('SERVER UP runnung in http://localhost:4000')
 
 })
