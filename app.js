@@ -28,6 +28,6 @@ app.use('/', require('./routes/router'))
 })*/
 app.set('port', process.env.PORT || 3000)
 app.listen('port', ()=>{
-    console.log('servidor en puerto ${app.get('port')}')
+    console.log(console.log('servidor en puerto' + app.get('port')))
 
 })
