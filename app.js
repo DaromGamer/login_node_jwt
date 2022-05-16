@@ -26,7 +26,7 @@ app.use('/', require('./routes/router'))
 /*app.get('/', (req, res)=>{
     res.render('index')
 })*/
-
+//hola
 app.listen(4000, ()=>{
     console.log('SERVER UP runnung in http://localhost:4000')
 
