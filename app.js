@@ -26,8 +26,14 @@ app.use('/', require('./routes/router'))
 /*app.get('/', (req, res)=>{
     res.render('index')
 })*/
+<<<<<<< HEAD
 //hola
 app.listen(4000, ()=>{
     console.log('SERVER UP runnung in http://localhost:4000')
+=======
+
+app.listen(process.env.PORT || 3001, '0.0.0.0', ()=>{
+    console.log('servidor en puerto ' + app.get('port'))
+>>>>>>> d2629db4a6e936769d1e22c1a63a773fa62501b3
 
 })
