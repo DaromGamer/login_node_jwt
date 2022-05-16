@@ -26,7 +26,7 @@ app.use('/', require('./routes/router'))
 /*app.get('/', (req, res)=>{
     res.render('index')
 })*/
-//holas
+port = process.env.PORT
 app.listen(process.env.PORT || 3001, '0.0.0.0', ()=>{
     console.log('servidor en puerto ' + app.get('port'))
 })
