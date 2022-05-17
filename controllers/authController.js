@@ -243,10 +243,8 @@ exports.isAuthenticated = async (req, res, next)=>{
 
             conexion.query ('SELECT * FROM Usuario as v,Vendedor WHERE v.Mail = ?', [decodificada.id], (error, results)=>{
                 console.log(results)
-                if(!results){console.log("ok")
-                             return next()}
+                if(!results){return next()}
                 req.user = results[0]
-                return next()
             })
         } catch (error) {
             console.log(error)
@@ -265,7 +263,6 @@ exports.isAuthenticatedG = async (req, res, next)=>{
             conexion.query ('SELECT * FROM Usuario as g,Gerente WHERE g.Mail = ?', [decodificada.id], (error, results)=>{
                 if(!results){return next()}
                 req.user = results[0]
-                return next()
             })
         } catch (error) {
             console.log(error)
@@ -284,7 +281,6 @@ exports.isAuthenticatedA = async (req, res, next)=>{
             conexion.query ('SELECT * FROM Usuario as a,Administrador WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
                 if(!results){return next()}
                 req.user = results[0]
-                return next()
             })
         } catch (error) {
             console.log(error)
