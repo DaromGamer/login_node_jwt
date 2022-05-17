@@ -10,7 +10,8 @@ function stockf() {
         return probando
         
     })
-
+     pruebas = results[0].Stock
+     return probando
 }
 
 module.exports.elstock = stockf
