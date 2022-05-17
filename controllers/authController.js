@@ -46,7 +46,7 @@ exports.registerG = async (req, res)=>{
         console.log(error)
     }
 }//-------------------------------------------------------------------------------------------------------------------
-
+//recordar modificar los otros logins y autentificates
 //metodo de loguin
 exports.login = async (req, res)=>{
     try {
