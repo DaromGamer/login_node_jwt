@@ -1,1 +1,80 @@
-<h1>second login</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>login venta autos</title>
+
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+<main class="form-signin shadow-lg p-3">
+  <form id="formLogin" action="/login" method="POST">
+    <img class="mb-4" src="img/logo.png" alt="" width="122" height="107">
+    <h1 class="h3 mb-3 fw-normal">Ventas</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="user" name="user" placeholder="name@example.com">
+      <label for="user">Email address</label>
+    </div>
+
+
+    <div class="form-floating">
+      <input type="password" class="form-control" id="passE" name="passE" placeholder="Password">
+      <label for="passE">clave Email</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="password" class="form-control" id="passW" name="passW" placeholder="Password">
+        <label for="passW">clave watsap</label>
+      </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar Secion</button>
+  </form>
+</main>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text:'<%= alertMessage %>',
+        icon:'<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %>
+    
+  </body>
+</html>
