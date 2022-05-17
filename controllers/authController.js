@@ -283,7 +283,7 @@ exports.isAuthenticatedA = async (req, res, next)=>{
             conexion.query ('SELECT * FROM Administrador as a WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
                 if(!results){return next()}
                 console.log("1 ", results)
-                req.user = results[0]
+                //req.user = results[0]
                 //console.log(req.user)
                 return next()
             })
