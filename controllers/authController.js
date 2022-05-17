@@ -286,6 +286,7 @@ exports.isAuthenticatedA = async (req, res, next)=>{
                 //req.user = results[0]
                 //console.log(req.user)
                 return next()
+                console.log("bien")
             })
         } catch (error) {
             console.log(error)
