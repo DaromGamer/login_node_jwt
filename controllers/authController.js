@@ -284,7 +284,7 @@ exports.isAuthenticatedA = async (req, res, next)=>{
                 if(!results){return next()}
                 console.log("1 ", results)
                 req.user = results[0]
-                console.log(req.user)
+                //console.log(req.user)
                 return next()
             })
         } catch (error) {
