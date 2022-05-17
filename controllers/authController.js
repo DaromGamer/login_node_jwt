@@ -281,7 +281,12 @@ exports.isAuthenticatedA = async (req, res, next)=>{
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
             conexion.query ('SELECT * FROM Administrador as a WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
-                if(!results){return next()}
+                if(!results){
+                    req.user = results[0]
+                    return next()}
+                else{
+                    res.redirect('/')
+                }
                 console.log("1 ", results)
                 //req.user = results[0]
                 //console.log(req.user)
