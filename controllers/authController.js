@@ -243,7 +243,7 @@ exports.isAuthenticated = async (req, res, next)=>{
 
             conexion.query ('SELECT * FROM Usuario as v,Vendedor WHERE v.Mail = ?', [decodificada.id], (error, results)=>{
                 console.log(results)
-                if(!results){console.log(ok)
+                if(!results){console.log("ok")
                              return next()}
                 req.user = results[0]
                 return next()
