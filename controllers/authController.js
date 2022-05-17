@@ -65,7 +65,7 @@ exports.login = async (req, res)=>{
                 ruta: 'login'
             })
         }else{
-            conexion.query('SELECT * FROM Usuario as v,Vendedor WHERE v.Mail = ?', [user], async (error, results)=>{
+            conexion.query('SELECT * FROM Usuario as u,Vendedor as v WHERE v.Mail ="'+[user]+'" and u.Mail="'+[user]+'"' , async (error, results)=>{
                 if(results.length == 0 || ! (await bcryptjs.compare(pass, results[0].Clave))){
                     res.render('login', {
                         alert: true,
