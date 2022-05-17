@@ -241,8 +241,8 @@ exports.isAuthenticated = async (req, res, next)=>{
         try {
             const decodificada2 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
 
-            conexion.query ('SELECT * FROM Usuario as v,Vendedor WHERE v.Mail = ?', [decodificada2.id], (error, results)=>{
-                console.log(results)
+            conexion.query ('SELECT * FROM Vendedor as v WHERE v.Mail = ?', [decodificada2.id], (error, results)=>{
+                //console.log(results)
                 if(!results){return next()}
                 req.user = results[0]
                 return next()
@@ -261,7 +261,7 @@ exports.isAuthenticatedG = async (req, res, next)=>{
         try {
             const decodificada3 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT * FROM Usuario as g,Gerente WHERE g.Mail = ?', [decodificada3.id], (error, results)=>{
+            conexion.query ('SELECT * FROM Gerente as g WHERE g.Mail = ?', [decodificada3.id], (error, results)=>{
                 if(!results){return next()}
                 req.user = results[0]
                 return next()
@@ -280,7 +280,7 @@ exports.isAuthenticatedA = async (req, res, next)=>{
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT * FROM Usuario as u,Administrador as a WHERE a.Mail = ? and u.Mail=?', [decodificada.id,decodificada.id], (error, results)=>{
+            conexion.query ('SELECT * FROM Administrador as a WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
                 if(!results){return next()}
                 console.log("1 ", results)
                 req.user = results[0]
