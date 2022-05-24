@@ -16,11 +16,9 @@ function stockf2() {
      const probando = 1
      conexion.query ('SELECT * FROM Vehiculos WHERE Modelo = ?', ["ford mustang"],function(err, rows, fields) {
     if (err) throw err;
-
-    for (var i = 0; i < rows.length; i++) {
-          probando2 = row[i].Stock
-    }
+    probando2 = row[0].Stock
     return probando
+     }
 }
 
 
