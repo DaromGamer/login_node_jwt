@@ -18,7 +18,7 @@ function stockf2() {
     if (err) throw err;
 
     for (var i = 0; i < rows.length; i++) {
-          probando2 = row[i][0].Stock
+          probando2 = row[i].Stock
     }
     return probando
 }
