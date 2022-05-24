@@ -24,4 +24,4 @@ function stockf2() {
 }
 
 
-module.exports.elstock = stockf
+module.exports.elstock = stockf2
