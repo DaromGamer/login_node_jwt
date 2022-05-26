@@ -20,7 +20,7 @@ function stockf() {
 function main() {
      const doQuery = (query) => {
          return new Promise((resolve, reject) => {
-             con.query(query, (error, results, fields) => {
+             conexion.query(query, (error, results, fields) => {
                  if(error) return reject(error);
                  console.log('Consulta correcta');
                  return resolve(results);
@@ -31,7 +31,7 @@ function main() {
      // si deseo utilizar el resultado de la consulta,
      // debo crear una función asíncrona y llamar a doQuery() usando await.
      const doStuffWithResults = async () => {
-         const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo = "ford mustang"';
+         const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
          const results = await doQuery(selectAllQuery);
          console.log(results);
          // Aquí puedes usar el resultado de tu consulta
