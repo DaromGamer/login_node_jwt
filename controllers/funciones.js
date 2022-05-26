@@ -38,7 +38,7 @@ function main() {
      }
  
      // llamamos a nuestro método
-     return doStuffWithResults();
+     return doStuffWithResults().Stock;
  }
 
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
