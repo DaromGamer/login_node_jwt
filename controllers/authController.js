@@ -46,7 +46,7 @@ exports.registerG = async (req, res)=>{
         console.log(error)
     }
 }//-------------------------------------------------------------------------------------------------------------------
-
+//recordar modificar los otros logins y autentificates
 //metodo de loguin
 exports.login = async (req, res)=>{
     try {
@@ -65,7 +65,7 @@ exports.login = async (req, res)=>{
                 ruta: 'login'
             })
         }else{
-            conexion.query('SELECT * FROM Usuario as v,Vendedor WHERE v.Mail = ?', [user], async (error, results)=>{
+            conexion.query('SELECT * FROM Usuario as u,Vendedor as v WHERE v.Mail ="'+[user]+'" and u.Mail="'+[user]+'"' , async (error, results)=>{
                 if(results.length == 0 || ! (await bcryptjs.compare(pass, results[0].Clave))){
                     res.render('login', {
                         alert: true,
@@ -239,10 +239,10 @@ exports.loginA = async (req, res)=>{
 exports.isAuthenticated = async (req, res, next)=>{
     if(req.cookies.jwt){
         try {
-            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+            const decodificada2 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
 
-            conexion.query ('SELECT * FROM Usuario as v,Vendedor WHERE v.Mail = ?', [decodificada.id], (error, results)=>{
-                console.log(results)
+            conexion.query ('SELECT * FROM Vendedor as v WHERE v.Mail = ?', [decodificada2.id], (error, results)=>{
+                //console.log(results)
                 if(!results){return next()}
                 req.user = results[0]
                 return next()
@@ -259,9 +259,9 @@ exports.isAuthenticated = async (req, res, next)=>{
 exports.isAuthenticatedG = async (req, res, next)=>{
     if(req.cookies.jwt){
         try {
-            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+            const decodificada3 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT * FROM Usuario as g,Gerente WHERE g.Mail = ?', [decodificada.id], (error, results)=>{
+            conexion.query ('SELECT * FROM Gerente as g WHERE g.Mail = ?', [decodificada3.id], (error, results)=>{
                 if(!results){return next()}
                 req.user = results[0]
                 return next()
@@ -280,10 +280,18 @@ exports.isAuthenticatedA = async (req, res, next)=>{
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT * FROM Usuario as a,Administrador WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
-                if(!results){return next()}
-                req.user = results[0]
-                return next()
+            conexion.query ('SELECT * FROM Administrador as a WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
+                if(!results){
+                    req.user = results[0]
+                    return next()}
+                else{
+                    res.redirect('/')
+                }
+                console.log("1 ", results)
+                //req.user = results[0]
+                //console.log(req.user)
+                //return next()
+                console.log("bien")
             })
         } catch (error) {
             console.log(error)

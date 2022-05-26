@@ -12,5 +12,20 @@ function stockf() {
     })
      return probando
 }
+function stockf2() {
+     probando2 = 1
+     conexion.query ('SELECT * FROM Vehiculos WHERE Modelo = ?', ["ford mustang"],(prepare: true) {
+    if (err) throw err;
+    probando2 = row[0].Stock
+    return probando2
+     })
+     return probando2
+}
+                     //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
+                     //para lo del autentic
+//resultset buscar
+//const query = 'SELECT name, email, address FROM users WHERE id = ?';
+//const result = await client.execute(query, [ id ], { prepare: true });
+
 
 module.exports.elstock = stockf2
