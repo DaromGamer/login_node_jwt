@@ -17,7 +17,7 @@ function stockf() {
      //probando2 = await conexion.query ('SELECT * FROM Vehiculos WHERE Modelo = ?', ["ford mustang"],{prepare: true})
      return probando2
 }*/
-function main() {
+async function main() {
      
      const doQuery = (query) => {
          return new Promise((resolve, reject) => {
@@ -40,12 +40,10 @@ function main() {
          // Aquí puedes usar el resultado de tu consulta
          return results[0].Stock
      }
-     const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
-     const results = await doQuery(selectAllQuery);
  
      // llamamos a nuestro método
-     //doStuffWithResults();
-     return results[0].Stock
+     doStuffWithResults();
+     return 10
  }
 
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
