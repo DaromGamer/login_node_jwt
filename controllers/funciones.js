@@ -43,7 +43,7 @@ async function main() {
  
      // llamamos a nuestro método
      const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
-     const results = await doQuery(selectAllQuery);
+     const results = doQuery(selectAllQuery);
 
      //doStuffWithResults();
      console.log(results[0].Stock)
