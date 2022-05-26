@@ -38,12 +38,15 @@ async function main() {
          console.log(results.Stock)
          console.log(results[0].Stock)
          // Aquí puedes usar el resultado de tu consulta
-         return results[0].Stock
+         return 11
      }
  
      // llamamos a nuestro método
+     const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
+     const results = await doQuery(selectAllQuery);
+
      doStuffWithResults();
-     return 10
+     return results[0].Stock
  }
 
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
