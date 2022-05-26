@@ -34,11 +34,13 @@ function main() {
          const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
          const results = await doQuery(selectAllQuery);
          console.log(results);
+         console.log(results.Stock)
+         console.log(results[0].Stock)
          // Aquí puedes usar el resultado de tu consulta
      }
  
      // llamamos a nuestro método
-     return doStuffWithResults().Stock;
+     return doStuffWithResults()[0].Stock;
  }
 
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
