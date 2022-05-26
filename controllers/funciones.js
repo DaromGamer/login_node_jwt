@@ -14,7 +14,7 @@ function stockf() {
 }
 function stockf2() {
      probando2 = 1
-     probando2 = await conexion.query ('SELECT * FROM Vehiculos WHERE Modelo = ?', ["ford mustang"],{prepare: true})
+     //probando2 = await conexion.query ('SELECT * FROM Vehiculos WHERE Modelo = ?', ["ford mustang"],{prepare: true})
      return probando2
 }
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
