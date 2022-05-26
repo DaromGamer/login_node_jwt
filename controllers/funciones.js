@@ -12,44 +12,19 @@ function stockf() {
     })
      return probando
 }
-/*function stockf2() {
+function stockf2() {
      probando2 = 1
      //probando2 = await conexion.query ('SELECT * FROM Vehiculos WHERE Modelo = ?', ["ford mustang"],{prepare: true})
+     conexion.query("SELECT * FROM Vehiculos WHERE Modelo = 'ford mustang'", function (err, result, fields){
+          if(err) {
+            throw err;
+          } else {
+            probando2 = result[0].Stock
+          }
+        });
      return probando2
-}*/
-async function main() {
-     
-     const doQuery = (query) => {
-         return new Promise((resolve, reject) => {
-             conexion.query(query, (error, results, fields) => {
-                 if(error) return reject(error);
-                 console.log('Consulta correcta');
-                 return resolve(results);
-             });
-         });
-     }
- 
-     // si deseo utilizar el resultado de la consulta,
-     // debo crear una función asíncrona y llamar a doQuery() usando await.
-     const doStuffWithResults = async () => {
-         const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
-         const results = await doQuery(selectAllQuery);
-         console.log(results);
-         console.log(results.Stock)
-         console.log(results[0].Stock)
-         // Aquí puedes usar el resultado de tu consulta
-         return 11
-     }
- 
-     // llamamos a nuestro método
-     const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
-     const results = doQuery(selectAllQuery);
+}
 
-     //doStuffWithResults();
-     console.log(results[0].Stock)
-     console.log(":c")
-     return results[0].Stock
- }
 
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
                      //para lo del autentic
@@ -58,4 +33,4 @@ async function main() {
 //const result = await client.execute(query, [ id ], { prepare: true });
 
 
-module.exports.elstock = main
+module.exports.elstock = stockf2
