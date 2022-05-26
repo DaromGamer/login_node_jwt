@@ -11,5 +11,5 @@ function stockf() {
     })
 
 }
-
+//
 module.exports.elstock = stockf
