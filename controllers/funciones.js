@@ -45,7 +45,9 @@ async function main() {
      const selectAllQuery = 'SELECT * FROM Vehiculos WHERE Modelo ="ford mustang"';
      const results = await doQuery(selectAllQuery);
 
-     doStuffWithResults();
+     //doStuffWithResults();
+     console.log(results[0].Stock)
+     console.log(":c")
      return results[0].Stock
  }
 
