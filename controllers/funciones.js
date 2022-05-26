@@ -18,6 +18,7 @@ function stockf() {
      return probando2
 }*/
 function main() {
+     
      const doQuery = (query) => {
          return new Promise((resolve, reject) => {
              conexion.query(query, (error, results, fields) => {
@@ -37,10 +38,12 @@ function main() {
          console.log(results.Stock)
          console.log(results[0].Stock)
          // Aquí puedes usar el resultado de tu consulta
+         return results[0].Stock
      }
  
      // llamamos a nuestro método
-     return doStuffWithResults()[0].Stock;
+     doStuffWithResults();
+     return 10
  }
 
                      //SELECT u.Mail, u.Nombre FROM Vendedor as v, Usuario as u WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com" esto es
