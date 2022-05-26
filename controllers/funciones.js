@@ -1,5 +1,5 @@
 
-const conexion = require('../database/db')
+/*const conexion = require('../database/db')
 const {promisify} = require('util')
 
 function stockf() {
@@ -33,4 +33,7 @@ function stockf2() {
 //const result = await client.execute(query, [ id ], { prepare: true });
 
 
-module.exports.elstock = stockf2
+module.exports.elstock = stockf2*/
+
+//aqui mi intento por lograr colocar un resultado de una consulta sql en una variable global, vamos me rendi pero encontre otra forma de hacer lo que queria
+//me duele el orgullo pero almenos puedo dormir
