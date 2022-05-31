@@ -26,7 +26,7 @@ router.get('/register', (req, res)=>{
 })
 //colocar en el req user el nombre mejorando le sentencia sql recordar
 router.get('/ventas',authController.isAuthenticated, (req, res)=>{
-    res.render('ventas',{user:req.user[0].Nombre,stockf:req.user[0].Stock,preciof:req.user[0].Precio})
+    res.render('ventas',{user:req.user[0].Nombre,stockf:req.user[1].Stock,preciof:req.user[1].Precio,stockc:req.user[0].Stock,precioc:req.user[0].Precio})
 })
 
 router.get('/gerente',authController.isAuthenticatedG, (req, res)=>{

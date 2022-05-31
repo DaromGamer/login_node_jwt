@@ -100,10 +100,20 @@
         </h2>
       </div>
       <!--contenido de ventas-->
-      <form id="formFord" action="/ventas" method="POST">
+      <div>
         <h3>Ford Mustang</h3>
         <img  src="img/ford.jpg"  width="450" height="150">
           <p>stock = <%= stockf %>        Precio = <%= preciof %> clp</p>
+          <br><br>
+          <h3>Corvete</h3>
+        <img  src="img/corvete.jpg"  width="450" height="150">
+          <p>stock = <%= stockc %>        Precio = <%= precioc %> clp</p>
+          <br><br>
+
+      </div>
+
+      <form id="formFord" action="/ventas" method="POST">
+
       </form>
 
     </main>
