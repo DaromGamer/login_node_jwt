@@ -244,7 +244,7 @@ exports.isAuthenticated = async (req, res, next)=>{
             conexion.query ('SELECT u.Mail, u.Nombre,x.Stock, x.Precio FROM Vendedor as v, Usuario as u,Vehiculos as x WHERE v.Mail = "'+decodificada2.id+'" and u.Mail = "'+decodificada2.id+'"', (error, results)=>{
                 //console.log(results)
                 if(!results){return next()}
-                req.user = results[0]
+                req.user = results//[0]
                 return next()
             })
         } catch (error) {
