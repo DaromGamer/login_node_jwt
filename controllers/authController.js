@@ -240,11 +240,11 @@ exports.isAuthenticated = async (req, res, next)=>{
     if(req.cookies.jwt){
         try {
             const decodificada2 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
-//SELECT u.Mail, u.Nombre,x.Stock FROM Vendedor as v, Usuario as u,Vehiculos as x WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com"
+//SELECT u.Mail, u.Nombre,x.Stock x.Precio FROM Vendedor as v, Usuario as u,Vehiculos as x WHERE v.Mail = "ripazha.darom@gmail.com" and u.Mail = "ripazha.darom@gmail.com"
             conexion.query ('SELECT u.Mail, u.Nombre,x.Stock FROM Vendedor as v, Usuario as u,Vehiculos as x WHERE v.Mail = "'+decodificada2.id+'" and u.Mail = "'+decodificada2.id+'"', (error, results)=>{
                 //console.log(results)
                 if(!results){return next()}
-                req.user = results//[0]
+                req.user = results[0]
                 return next()
             })
         } catch (error) {
@@ -261,7 +261,7 @@ exports.isAuthenticatedG = async (req, res, next)=>{
         try {
             const decodificada3 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT * FROM Gerente as g WHERE g.Mail = ?', [decodificada3.id], (error, results)=>{
+            conexion.query ('SELECT u.Mail, u.Nombre,x.Stock FROM Gerente as g, Usuario as u,Vehiculos as x WHERE g.Mail = "'+decodificada3.id+'" and u.Mail = "'+decodificada3.id+'"', (error, results)=>{
                 if(!results){return next()}
                 req.user = results[0]
                 return next()
@@ -280,7 +280,7 @@ exports.isAuthenticatedA = async (req, res, next)=>{
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT * FROM Administrador as a WHERE a.Mail = ?', [decodificada.id], (error, results)=>{
+            conexion.query ('SELECT u.Mail, u.Nombre,x.Stock FROM Administrador as a, Usuario as u,Vehiculos as x WHERE a.Mail = "'+decodificada.id+'" and u.Mail = "'+decodificada.id+'"', (error, results)=>{
                 if(!results){
                     req.user = results[0]
                     return next()}
