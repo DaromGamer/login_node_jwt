@@ -101,7 +101,7 @@
       </div>
       <!--contenido de ventas-->
 
-      <form id="formFord" action="/ventasFord" method="POST">
+      <form id="formCorvete" action="/ventas" method="POST">
         <h3>Ford Mustang</h3>
         <img  src="img/ford.jpg"  width="450" height="150">
           <p>stock = <%= stockf %>        Precio = <%= preciof %> clp</p>
@@ -109,13 +109,13 @@
           <p>Cantidad</p>
           <input type="number" class="form-control" id="cantidadFord" name="cantidadFord">
           <br>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">realizar compra</button>
-      </form >
-      <form id="formCorvete" action="/ventasCorvete" method="POST">
+
         <h3>Corvete</h3>
         <img  src="img/corvete.jpg"  width="450" height="150">
           <p>stock = <%= stockc %>        Precio = <%= precioc %> clp</p>
-          <br><br>
+          <br>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">realizar compra</button>
+          <br>
       </form>
 
     </main>
