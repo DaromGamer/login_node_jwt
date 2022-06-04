@@ -81,7 +81,7 @@ exports.finalizarCompra= async function(req, res){
                     timer: 8000,
                     ruta: 'ventas'    
                 })
-                console.log("F")
+                
             }
             else{
                 //
