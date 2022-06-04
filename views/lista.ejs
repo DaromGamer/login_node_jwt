@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h3>Gerentes</h3>
+    <table style="width: 500px;">
+        <thead>
+            <tr>
+                <th>Correo electronico</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(gerentes.length>0){
+                Object.keys(gerentes).forEach(function(key) {%>
+                    <tr>
+                        <td><%= gerentes[key].Mail %></td>
+                        <td><%= gerentes[key].Nombre %></td>
+                    </tr>    
+                  <%})  
+            } %>
+        </tbody>
+        <tfoot>
+            <td></td>
+            <td>:)</td>
+        </tfoot>
+    </table>
+    <h3>Vendedores</h3>
+    <table style="width: 500px;">
+        <thead>
+            <tr>
+                <th>Correo electronico</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(vendedores.length>0){
+                Object.keys(vendedores).forEach(function(key) {%>
+                    <tr>
+                        <td><%= vendedores[key].Mail %></td>
+                        <td><%= vendedores[key].Nombre %></td>
+                    </tr>    
+                  <%})  
+            } %>
+        </tbody>
+        <tfoot>
+            <td></td>
+            <td>:)</td>
+        </tfoot>
+    </table>
+
+</body>
+</html>

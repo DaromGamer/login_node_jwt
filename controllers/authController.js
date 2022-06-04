@@ -52,7 +52,7 @@ exports.login = async (req, res)=>{
     try {
         const user = req.body.user
         const pass = req.body.pass
-        console.log(user+"-"+pass)
+        //console.log(user+"-"+pass)
 
         if(!user || !pass){
             res.render('login',{
@@ -83,7 +83,7 @@ exports.login = async (req, res)=>{
                     const token = jwt.sign({id:mail}, process.env.JWT_SECRETO, {
                         expiresIn: process.env.JW_TIEMPO_EXPIRA
                     })
-                    console.log("token: "+ token+" para el usuario: "+mail)
+                    //console.log("token: "+ token+" para el usuario: "+mail)
                     
                     const cookieOptions = {
                         expires: new Date(Date.now()+process.env.JW_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
@@ -115,7 +115,7 @@ exports.loginG = async (req, res)=>{
     try {
         const user = req.body.user
         const pass = req.body.pass
-        console.log(user+"-"+pass)
+        //console.log(user+"-"+pass)
 
         if(!user || !pass){
             res.render('login',{
@@ -146,7 +146,7 @@ exports.loginG = async (req, res)=>{
                     const token = jwt.sign({id:mail}, process.env.JWT_SECRETO, {
                         expiresIn: process.env.JW_TIEMPO_EXPIRA
                     })
-                    console.log("token: "+ token+" para el usuario: "+mail)
+                    //console.log("token: "+ token+" para el usuario: "+mail)
                     
                     const cookieOptions = {
                         expires: new Date(Date.now()+process.env.JW_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
@@ -177,7 +177,7 @@ exports.loginA = async (req, res)=>{
     try {
         const user = req.body.user
         const pass = req.body.pass
-        console.log(user+"-"+pass)
+        //console.log(user+"-"+pass)
 
         if(!user || !pass){
             res.render('login',{
@@ -208,7 +208,7 @@ exports.loginA = async (req, res)=>{
                     const token = jwt.sign({id:mail}, process.env.JWT_SECRETO, {
                         expiresIn: process.env.JW_TIEMPO_EXPIRA
                     })
-                    console.log("token: "+ token+" para el usuario: "+mail)
+                    //console.log("token: "+ token+" para el usuario: "+mail)
                     
                     const cookieOptions = {
                         expires: new Date(Date.now()+process.env.JW_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
@@ -281,17 +281,9 @@ exports.isAuthenticatedA = async (req, res, next)=>{
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
             conexion.query ('SELECT u.Mail, u.Nombre,x.Stock FROM Administrador as a, Usuario as u,Vehiculos as x WHERE a.Mail = "'+decodificada.id+'" and u.Mail = "'+decodificada.id+'"', (error, results)=>{
-                if(!results){
-                    req.user = results[0]
-                    return next()}
-                else{
-                    res.redirect('/')
-                }
-                console.log("1 ", results)
-                //req.user = results[0]
-                //console.log(req.user)
-                //return next()
-                console.log("bien")
+                if(!results){return next()}
+                req.user = results//[0]
+                return next()
             })
         } catch (error) {
             console.log(error)

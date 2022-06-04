@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>resultado</h3>
+    
+    <% if (cf>0) { %>
+        <p>ford mustang x <%= cf %> ___________________ <%= (cf*pf) %> clp</p><br>
+      <% } %>
+
+      <% if (cc>0) { %>
+        <p>ford mustang x <%= cc %> ___________________ <%= (cc*pc) %> clp</p><br>
+      <% } %>
+    <p><%= total %> clp</p><br>
+    <form id="formCompra" action="/confirmCompra" method="POST">
+      <p><button class="btn btn-secondary" type="submit">Confirmar Compra &raquo;</button></p>
+    </form>
+
+    
+</body>
+</html>
