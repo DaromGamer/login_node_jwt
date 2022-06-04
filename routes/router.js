@@ -30,12 +30,12 @@ router.get('/ventas',authController.isAuthenticated, (req, res)=>{
 })
 
 router.get('/gerente',authController.isAuthenticatedG, (req, res)=>{
-    res.render('gerente',{user:req.user.Nombre})
+    res.render('gerente',{user:req.user[0].Nombre})
     //console.log({user:req.user})
 })
 
 router.get('/admin',authController.isAuthenticatedA, (req, res)=>{
-    res.render('admin',{user:req.user.Nombre,buscado:administrar.resultado})
+    res.render('admin',{user:req.user[0].Nombre,buscado:administrar.resultado})
     //console.log({user:req.user})
     
 })
