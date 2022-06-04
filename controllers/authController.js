@@ -249,7 +249,7 @@ exports.isAuthenticated = async (req, res, next)=>{
             })
         } catch (error) {
             console.log(error)
-            return next()
+            res.redirect('/')
         }
     }else{
         res.redirect('/')
@@ -268,7 +268,7 @@ exports.isAuthenticatedG = async (req, res, next)=>{
             })
         } catch (error) {
             console.log(error)
-            return next()
+            res.redirect('/')
         }
     }else{
         res.redirect('/')
@@ -287,7 +287,7 @@ exports.isAuthenticatedA = async (req, res, next)=>{
             })
         } catch (error) {
             console.log(error)
-            return next()
+            res.redirect('/')
         }
     }else{
         res.redirect('/')
