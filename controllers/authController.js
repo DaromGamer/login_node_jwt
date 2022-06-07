@@ -261,9 +261,9 @@ exports.isAuthenticatedG = async (req, res, next)=>{
         try {
             const decodificada3 = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
             
-            conexion.query ('SELECT u.Mail, u.Nombre,x.Stock FROM Gerente as g, Usuario as u,Vehiculos as x WHERE g.Mail = "'+decodificada3.id+'" and u.Mail = "'+decodificada3.id+'"', (error, results)=>{
+            conexion.query ('SELECT u.Mail, u.Nombre,x.Stock,x.Precio FROM Gerente as g, Usuario as u,Vehiculos as x WHERE g.Mail = "'+decodificada3.id+'" and u.Mail = "'+decodificada3.id+'"', (error, results)=>{
                 if(!results){return next()}
-                req.user = results[0]
+                req.user = results
                 return next()
             })
         } catch (error) {

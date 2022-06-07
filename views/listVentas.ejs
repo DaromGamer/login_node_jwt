@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h3>Ventas</h3>
+    <% if(facturados.length>0){
+        actual = 0
+        total = 0
+
+        Object.keys(facturados).forEach(function(key) {
+            if(facturados[key].Id_factura > actual){
+                actual = facturados[key].Id_factura
+                if(facturados[key].Modelo == "ford mustang"){
+                    sub = facturados[key].Cantidad * preciof
+                }
+                else{
+                    sub = facturados[key].Cantidad * precioc
+                }
+                if(actual == 1){
+                    total = sub
+                    %>
+                    <table style="width: 500px;">
+                        <thead>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Cantidad</th>
+                                <th>subTotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><%= facturados[key].Modelo %></td>
+                                <td><%= facturados[key].Cantidad %></td>
+                                <td><%= sub %></td>
+                                
+                            </tr> 
+                <%}
+                else{%>
+                        </tbody>
+                        <tfoot>
+                            <td>Total</td>
+                            <td><%= total %></td>
+                        </tfoot>
+                    </table><br>
+
+                    <table style="width: 500px;">
+                        <thead>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Cantidad</th>
+                                <th>subTotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><%= facturados[key].Modelo %></td>
+                                <td><%= facturados[key].Cantidad %></td>
+                                <td><%= sub %></td>
+                                
+                            </tr> 
+
+                    <%
+                    total = sub
+                }    
+            }
+            else{
+                if(facturados[key].Modelo == "ford mustang"){
+                    total += facturados[key].Cantidad * preciof
+                    sub = facturados[key].Cantidad * preciof
+                }
+                else{
+                    total += facturados[key].Cantidad * precioc
+                    sub = facturados[key].Cantidad * precioc
+                }%>
+                <tr>
+                    <td><%= facturados[key].Modelo %></td>
+                    <td><%= facturados[key].Cantidad %></td>
+                    <td><%= sub %></td>
+                </tr>
+            <%}
+
+          })%>
+        </tbody>
+        <tfoot>
+            <td>Total</td>
+            <td><%= total %></td>
+        </tfoot>
+    </table><br>
+        <% total = 0
+    } %>
+</body>
+</html>

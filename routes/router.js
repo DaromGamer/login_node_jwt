@@ -6,6 +6,7 @@ const router = express.Router()
 const authController = require('../controllers/authController')
 const procesos = require('../controllers/procesos')
 const administrar = require('../controllers/administrar')
+const procegerente = require('../controllers/procegerente')
 
 /*const conection = require('../database/db')*/
 //router para las vistas
@@ -30,7 +31,7 @@ router.get('/ventas',authController.isAuthenticated, (req, res)=>{
 })
 
 router.get('/gerente',authController.isAuthenticatedG, (req, res)=>{
-    res.render('gerente',{user:req.user[0].Nombre})
+    res.render('gerente',{user:req.user[0].Nombre,stockf:req.user[1].Stock,stockc:req.user[0].Stock})
     //console.log({user:req.user})
 })
 
@@ -57,6 +58,10 @@ router.get('/lista',authController.isAuthenticatedA, (req, res)=>{
     res.render('lista',{gerentes:administrar.gerentes,vendedores:administrar.vendedores})
 })
 
+router.get('/listVentas',authController.isAuthenticatedG, (req, res)=>{
+    res.render('listVentas',{facturados:procegerente.listaventas,preciof:req.user[1].Precio,precioc:req.user[0].Precio})
+})
+
 
 //router para los controladores
 router.post('/register', authController.register)
@@ -71,6 +76,7 @@ router.post('/buscar',administrar.buscar)
 router.post('/regventa',administrar.rv)
 router.post('/reggerente',administrar.rg)
 router.post('/lista',administrar.listar)
+router.post("/mostrarventas",procegerente.buscarVentas)
 
 router.get('/logout', authController.logout)
 

@@ -58,31 +58,31 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file"></span>
-              Orders
+              
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="shopping-cart"></span>
-              Products
+              
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users"></span>
-              Customers
+              
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="bar-chart-2"></span>
-              Reports
+              
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="layers"></span>
-              Integrations
+              
             </a>
           </li>
         </ul>
@@ -98,7 +98,21 @@
             <span class="badge bg-success"><%= user %></span>
           <% } %>
         </h2>
-      </div> 
+      </div>
+      <div>
+        <h3>Ford Mustang</h3>
+        <img  src="img/ford.jpg"  width="450" height="150">
+          <p>stock = <%= stockf %>
+          <br>
+
+        <h3>Corvete</h3>
+        <img  src="img/corvete.jpg"  width="450" height="150">
+          <p>stock = <%= stockc %>
+          <br>
+      </div>
+      <form id="formmosventa" action="/mostrarventas" method="POST">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">mostrar Ventas</button><br>
+      </form>
     </main>
   </div>
 </div>
