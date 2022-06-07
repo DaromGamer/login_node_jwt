@@ -33,7 +33,7 @@ exports.buscar = async (req, res)=>{
 exports.rg = async (req, res)=>{
     res.redirect('/registerGerente')
 }
-exports.rv = async (req, res)=>{ vf
+exports.rv = async (req, res)=>{ 
     res.redirect('/register')
 }
 
